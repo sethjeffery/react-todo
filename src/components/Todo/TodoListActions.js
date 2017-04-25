@@ -25,6 +25,11 @@ export const TodoListActions = ({
       />,
     ]
 
+    const inputRef = node => {
+      node && node.input && node.input.focus()
+      input = node
+    }
+
   return (
     <div>
       <FloatingActionButton
@@ -36,7 +41,7 @@ export const TodoListActions = ({
 
       <Dialog title="Add todo item" actions={dialogActions} open={modalOpen} onRequestClose={onToggleDialog}>
         <TextField
-          ref={node => { input = node }}
+          ref={inputRef}
           name='add_todo'
           floatingLabelText="Name your todo item"
           style={{width: '100%'}} />

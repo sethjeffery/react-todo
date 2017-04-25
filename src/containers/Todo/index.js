@@ -2,6 +2,12 @@ import { connect } from 'react-redux';
 import * as components from '../../components/Todo';
 import { addTodo, toggleTodo, setVisibilityFilter, VISIBILITY_FILTER } from '../../actions';
 
+const onAddTodo = dispatch => text => {
+  if (text) {
+    dispatch(addTodo(text))
+  }
+}
+
 const getVisibleTodos = (todos, filter) => {
   switch(filter) {
     case VISIBILITY_FILTER.TODO:
@@ -20,9 +26,9 @@ export const Todo = connect(
   },
   function mapDispatchToProps(dispatch) {
     return {
-      addTodo: text => dispatch(addTodo(text)),
-      toggleTodo: id => dispatch(toggleTodo(id)),
-      setVisibilityFilter: filter => dispatch(setVisibilityFilter(filter))
+      onAddTodo: onAddTodo(dispatch),
+      onToggleTodo: id => dispatch(toggleTodo(id)),
+      onSetVisibilityFilter: filter => dispatch(setVisibilityFilter(filter))
     }
   }
 )(components.Todo);

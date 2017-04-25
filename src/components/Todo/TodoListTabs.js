@@ -4,10 +4,10 @@ import { VISIBILITY_FILTER } from '../../actions'
 import { Tabs, Tab } from 'material-ui/Tabs';
 
 export const TodoListTabs = ({
-  setVisibilityFilter,
+  onSetVisibilityFilter,
   visibilityFilter
 }) => {
-  const onClickTab = filter => event => setVisibilityFilter(filter)
+  const onClickTab = filter => event => onSetVisibilityFilter(filter)
   const tabs = { [VISIBILITY_FILTER.ALL]: 'All', [VISIBILITY_FILTER.TODO]: 'Todo' }
 
   return (
@@ -18,7 +18,7 @@ export const TodoListTabs = ({
 }
 
 TodoListTabs.propTypes = {
-  setVisibilityFilter: PropTypes.func.isRequired,
+  onSetVisibilityFilter: PropTypes.func.isRequired,
   visibilityFilter: PropTypes.string.isRequired
 }
 

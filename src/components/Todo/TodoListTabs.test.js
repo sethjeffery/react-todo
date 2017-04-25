@@ -7,6 +7,6 @@ it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
     <Provider>
-      <TodoListTabs visibilityFilter='SHOW_ALL' setVisibilityFilter={() => {}} />
+      <TodoListTabs visibilityFilter='SHOW_ALL' onSetVisibilityFilter={() => {}} />
     </Provider>, div);
 });

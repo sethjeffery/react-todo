@@ -5,15 +5,15 @@ import TodoListTabs from './TodoListTabs';
 
 export const Todo = ({
   todos,
-  toggleTodo,
-  addTodo,
+  onToggleTodo,
+  onAddTodo,
   visibilityFilter,
-  setVisibilityFilter
+  onSetVisibilityFilter
 }) => (
   <div>
-    <TodoListTabs visibilityFilter={visibilityFilter} setVisibilityFilter={setVisibilityFilter} />
-    <TodoListActions onAddTodoClick={addTodo} />
-    <TodoList todos={todos} onTodoClick={toggleTodo} />
+    <TodoListTabs visibilityFilter={visibilityFilter} onSetVisibilityFilter={onSetVisibilityFilter} />
+    <TodoListActions onAddTodo={onAddTodo} />
+    <TodoList todos={todos} onTodoClick={onToggleTodo} />
   </div>
 )
 

@@ -5,12 +5,12 @@ import Todo from '../containers/Todo'
 import About from './About'
 import { Route } from 'react-router'
 import ScrollToTop from './ScrollToTop'
-import Drawer from 'material-ui/Drawer'
 import IconButton from 'material-ui/IconButton'
-import NavigationClose from 'material-ui/svg-icons/navigation/close'
+import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
+import NavigationMoreVert from 'material-ui/svg-icons/navigation/more-vert'
 import InfoOutline from 'material-ui/svg-icons/action/info-outline'
-import List from 'material-ui/svg-icons/action/list'
+import './App.css'
 
 export const App = ({
   onClickIndex,
@@ -19,26 +19,20 @@ export const App = ({
   onToggleDrawer
 }) => (
   <ScrollToTop>
-    <div>
+    <div className='App'>
       <AppBar
         title="Todo List"
         style={{ backgroundColor: indigo900}}
-        onLeftIconButtonTouchTap={onToggleDrawer}
-      />
-      <Drawer
-        width={300}
-        open={drawerOpen}
-        docked={false}
-        onRequestChange={(open) => onToggleDrawer({open})}
+        showMenuIconButton={false}
+        iconElementRight={<IconMenu
+          iconButtonElement={<IconButton><NavigationMoreVert /></IconButton>}
+          targetOrigin={{horizontal: 'right', vertical: 'top'}}
+          anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
         >
-        <AppBar
-          title="Todo List"
-          iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-          onLeftIconButtonTouchTap={onToggleDrawer}
-          />
-          <MenuItem leftIcon={<List />} onClick={onClickIndex}>View Todos</MenuItem>
-          <MenuItem leftIcon={<InfoOutline />} onClick={onClickAbout}>About</MenuItem>
-      </Drawer>
+          <MenuItem primaryText="View Todos" onClick={onClickIndex} />
+          <MenuItem primaryText="About"  onClick={onClickAbout} />
+        </IconMenu>}
+      />
       <Route exact path="/" component={Todo} />
       <Route path="/about" component={About} />
     </div>

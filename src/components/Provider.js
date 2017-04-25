@@ -6,10 +6,15 @@ import reducers from '../reducers'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import PropTypes from 'prop-types'
 
+let tapEventPluggedIn = false
+
 class AppProvider extends Component {
   componentWillMount() {
     // This is needed for setting up Material UI
-    injectTapEventPlugin();
+    if (!tapEventPluggedIn) {
+      tapEventPluggedIn = true
+      injectTapEventPlugin();
+    }
   }
 
   render() {
