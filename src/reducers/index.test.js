@@ -4,14 +4,28 @@ import { combineReducers } from 'redux'
 
 describe('with unknown action', () => {
   it('returns same state', () => {
-    const oldState = { todos: fromJS([{ id: 0 }]), visibilityFilter: 'VISIBILITY_FILTER.ALL', addTodoModal: fromJS({ open: false }), routing: {"location": null}, drawerOpen: false }
+    const oldState = {
+      todos: 'SOMETHING',
+      visibilityFilter: 'SOMETHING',
+      addTodoModal: 'SOMETHING',
+      formReducer: 'SOMETHING',
+      routing: 'SOMETHING',
+      drawerOpen: 'SOMETHING'
+    }
     expect(reducer(oldState, { type: 'UNKNOWN_ACTION' })).toEqual(oldState)
   })
 })
 
 describe('by default', () => {
   it('returns default state', () => {
-    const defaultState = { todos: fromJS([]), visibilityFilter: 'VISIBILITY_FILTER.ALL', addTodoModal: fromJS({ open: false }), routing: {"location": null}, drawerOpen: false }
+    const defaultState = {
+      todos: fromJS([]),
+      visibilityFilter: 'VISIBILITY_FILTER.ALL',
+      addTodoModal: fromJS({ open: false }),
+      formReducer: {},
+      routing: {"location": null },
+      drawerOpen: false
+    }
     expect(reducer(undefined, {})).toEqual(defaultState)
   })
 })

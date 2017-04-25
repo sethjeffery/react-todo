@@ -2,6 +2,7 @@ import { List, Map } from 'immutable'
 import { combineReducers } from 'redux'
 import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, VISIBILITY_FILTER, TOGGLE_ADD_TODO_MODAL, TOGGLE_DRAWER } from '../actions'
 import { routerReducer } from 'react-router-redux'
+import { reducer as formReducer } from 'redux-form'
 
 const newId = (state) => {
   const maxId = state.map(item => item.get('id')).max()
@@ -72,5 +73,5 @@ const drawerOpen = (state = false, action) => {
   }
 }
 
-const reducers = combineReducers({ todos, visibilityFilter, addTodoModal, drawerOpen, routing: routerReducer })
+const reducers = combineReducers({ todos, visibilityFilter, addTodoModal, drawerOpen, formReducer, routing: routerReducer })
 export default reducers
