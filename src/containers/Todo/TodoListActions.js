@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import * as components from '../../components/Todo/TodoListActions'
-import { addTodo, toggleAddTodoModal } from '../../actions'
+import { toggleAddTodoModal } from '../../actions'
 
 const TodoListActions = connect(
   function mapStateToProps(state) {
