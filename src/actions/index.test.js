@@ -2,8 +2,8 @@ import { addTodo, toggleTodo, setVisibilityFilter, ADD_TODO, TOGGLE_TODO, SET_VI
 
 describe('addTodo', () => {
   it('generates an ADD_TODO action', () => {
-    const expected = { type: ADD_TODO, text: 'Hello' }
-    expect(addTodo('Hello')).toEqual(expected)
+    const expected = { type: ADD_TODO, text: 'Hello', date: '2010-01-01' }
+    expect(addTodo({ text: 'Hello', date: '2010-01-01' })).toEqual(expected)
   })
 })
 

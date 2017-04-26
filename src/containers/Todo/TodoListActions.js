@@ -5,7 +5,7 @@ import { toggleAddTodoModal } from '../../actions'
 const TodoListActions = connect(
   function mapStateToProps(state) {
     return {
-      modalOpen: state.addTodoModal.get('open')
+      modalOpen: state.app.addTodoModal.open
     }
   },
   function mapDispatchToProps(dispatch) {

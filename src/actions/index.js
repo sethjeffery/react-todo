@@ -8,10 +8,11 @@ export const VISIBILITY_FILTER = {
   TODO: 'VISIBILITY_FILTER.TODO'
 }
 
-export const addTodo = text => {
+export const addTodo = ({ text, date }) => {
   return {
     type: ADD_TODO,
-    text: text
+    text: text,
+    date: date
   }
 }
 

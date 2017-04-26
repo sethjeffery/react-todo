@@ -1,6 +1,5 @@
 import React from 'react';
 import TodoItem from './TodoItem'
-import ImmutablePropTypes from 'react-immutable-proptypes'
 import PropTypes from 'prop-types'
 import {List} from 'material-ui/List'
 
@@ -13,10 +12,11 @@ export const TodoList = ({
     <List>
       {todos.map(todo =>
         <TodoItem
-          key={todo.get('id')}
-          text={todo.get('text')}
-          onClick={() => onTodoClick(todo.get('id'))}
-          checked={todo.get('checked')}
+          key={todo.id}
+          text={todo.text}
+          date={todo.date && todo.date.toString()}
+          onClick={() => onTodoClick(todo.id)}
+          checked={todo.checked}
           />
       )}
     </List>
@@ -24,7 +24,7 @@ export const TodoList = ({
 )
 
 TodoList.propTypes = {
-  todos: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({ id: PropTypes.number.isRequired, text: PropTypes.string })).isRequired,
+  todos: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number.isRequired, text: PropTypes.string })).isRequired,
   onTodoClick: PropTypes.func,
   onAddTodoClick: PropTypes.func
 }

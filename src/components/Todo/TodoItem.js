@@ -7,10 +7,12 @@ import ToggleCheckBoxOutlineBlank from 'material-ui/svg-icons/toggle/check-box-o
 const TodoItem = ({
   onClick,
   text,
+  date,
   checked
 }) => (
   <ListItem
     primaryText={text}
+    secondaryText={date}
     leftIcon={checked ? <ToggleCheckBox /> : <ToggleCheckBoxOutlineBlank />}
     onClick={onClick}
     />
@@ -19,6 +21,7 @@ const TodoItem = ({
 TodoItem.propTypes = {
   onClick: PropTypes.func,
   text: PropTypes.string.isRequired,
+  date: PropTypes.string,
   checked: PropTypes.bool
 }
 

@@ -7,7 +7,7 @@ import { toggleDrawer } from '../actions'
 export const App = withRouter(connect(
   function mapStateToProps(state) {
     return {
-      drawerOpen: state.drawerOpen
+      drawerOpen: state.app.drawerOpen
     }
   },
   function mapDispatchToProps(dispatch) {

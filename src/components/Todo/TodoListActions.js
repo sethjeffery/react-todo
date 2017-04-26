@@ -5,13 +5,14 @@ import FlatButton from 'material-ui/FlatButton'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import Dialog from 'material-ui/Dialog'
+import DatePicker from 'material-ui/DatePicker'
 
 export const TodoListActions = ({
   onAddTodo,
   onToggleDialog,
   modalOpen = false
 }) => {
-  let input;
+  let nameInput, dateInput;
 
   const dialogActions = [
       <FlatButton
@@ -21,13 +22,13 @@ export const TodoListActions = ({
       <FlatButton
         label="Submit"
         primary
-        onTouchTap={() => { onAddTodo(input.input.value) }}
+        onTouchTap={() => { onAddTodo({ text: nameInput.input.value, date: dateInput.state.date }) }}
       />,
     ]
 
     const inputRef = node => {
       node && node.input && node.input.focus()
-      input = node
+      nameInput = node
     }
 
   return (
@@ -45,6 +46,10 @@ export const TodoListActions = ({
           name='add_todo'
           floatingLabelText="Name your todo item"
           style={{width: '100%'}} />
+        <DatePicker
+          ref={node => dateInput = node }
+          autoOk
+          hintText="Deadline date" />
       </Dialog>
     </div>
   )
