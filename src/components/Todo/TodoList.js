@@ -2,6 +2,7 @@ import React from 'react';
 import TodoItem from './TodoItem'
 import PropTypes from 'prop-types'
 import {List} from 'material-ui/List'
+import moment from 'moment'
 
 export const TodoList = ({
   todos,
@@ -14,7 +15,7 @@ export const TodoList = ({
         <TodoItem
           key={todo.id}
           text={todo.text}
-          date={todo.date && todo.date.toString()}
+          date={todo.date && moment(todo.date).calendar().split(" at")[0]}
           onClick={() => onTodoClick(todo.id)}
           checked={todo.checked}
           />

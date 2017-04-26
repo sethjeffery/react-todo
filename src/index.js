@@ -5,6 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import reducers from './reducers'
 import { routerMiddleware, ConnectedRouter as Router } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
+import { localStorageMiddleware, loadStateFromStorage } from './middleware/storage'
 import App from './containers/App';
 import './reset.css'
 import './index.css'
@@ -19,7 +20,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 // Build the redux store
 const store = createStore(
   reducers,
-  composeEnhancers(applyMiddleware(historyMiddleware))
+  loadStateFromStorage(),
+  composeEnhancers(applyMiddleware(historyMiddleware, localStorageMiddleware))
 )
 
 ReactDOM.render(
