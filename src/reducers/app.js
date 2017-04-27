@@ -1,8 +1,17 @@
-import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, VISIBILITY_FILTER, TOGGLE_ADD_TODO_MODAL, TOGGLE_DRAWER } from '../actions'
 import { combineReducers } from 'redux'
+import {
+  ADD_TODO,
+  TOGGLE_TODO,
+  SET_VISIBILITY_FILTER,
+  VISIBILITY_FILTER,
+  TOGGLE_ADD_TODO_MODAL,
+  TOGGLE_DRAWER,
+  SHOW_TODO_DETAILS,
+  HIDE_TODO_DETAILS
+} from '../actions'
 
 const newId = (state) => {
-  return state.length > 0 ? Math.max(state.map(item => item.id)) + 1 : 0
+  return state.length > 0 ? Math.max(...(state.map(item => item.id))) + 1 : 0
 }
 
 const todo = (state, action) => {
@@ -15,11 +24,19 @@ const todo = (state, action) => {
         checked: false
       }
     case TOGGLE_TODO:
-      if (state.id !== action.id) {
-        return state
-      } else {
+      if (state.id === action.id) {
         return { ...state, checked: !state.checked }
+      } else {
+        return state
       }
+    case SHOW_TODO_DETAILS:
+      if (state.id === action.id) {
+        return { ...state, selected: true }
+      } else {
+        return { ...state, selected: false }
+      }
+    case HIDE_TODO_DETAILS:
+      return { ...state, selected: false }
     default:
       return state
   }
@@ -30,6 +47,8 @@ const todos = (state = [], action) => {
     case ADD_TODO:
       return [...state, todo(state, action)]
     case TOGGLE_TODO:
+    case SHOW_TODO_DETAILS:
+    case HIDE_TODO_DETAILS:
       return state.map(item => todo(item, action))
     default:
       return state

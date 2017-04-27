@@ -36,7 +36,7 @@ export const TodoListActions = ({
       <FloatingActionButton
           secondary
           onClick={onToggleDialog}
-          style={{position: 'absolute', bottom: '1rem', right: '1rem' }}>
+          style={{position: 'absolute', bottom: '1rem', right: '1rem', zIndex: 3 }}>
         <ContentAdd />
       </FloatingActionButton>
 

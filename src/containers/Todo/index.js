@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import * as components from '../../components/Todo';
-import { addTodo, toggleTodo, setVisibilityFilter, VISIBILITY_FILTER } from '../../actions';
+import { addTodo, toggleTodo, setVisibilityFilter, showTodoDetails, hideTodoDetails, VISIBILITY_FILTER } from '../../actions';
 
 const onAddTodo = dispatch => ({ text, date }) => {
   if (text) {
@@ -28,7 +28,9 @@ export const Todo = connect(
     return {
       onAddTodo: onAddTodo(dispatch),
       onToggleTodo: id => dispatch(toggleTodo(id)),
-      onSetVisibilityFilter: filter => dispatch(setVisibilityFilter(filter))
+      onSetVisibilityFilter: filter => dispatch(setVisibilityFilter(filter)),
+      onShowTodoDetails: id => dispatch(showTodoDetails(id)),
+      onHideTodoDetails: () => dispatch(hideTodoDetails())
     }
   }
 )(components.Todo);

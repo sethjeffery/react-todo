@@ -8,7 +8,7 @@ it('renders without crashing', () => {
   const todos = [{ id: 0, text: 'Hello' }]
   ReactDOM.render(
     <Provider>
-      <TodoList todos={todos} />
+      <TodoList todos={todos} onTodoClick={() => {}} onShowTodoDetails={() => {}} />
     </Provider>
     , div);
 });

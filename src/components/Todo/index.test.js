@@ -7,6 +7,14 @@ it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
     <Provider>
-      <Todo todos={[]} onToggleTodo={() => {}} onAddTodo={() => {}} onSetVisibilityFilter={() => {}} visibilityFilter='ALL' />
+      <Todo
+        todos={[]}
+        onToggleTodo={() => {}}
+        onAddTodo={() => {}}
+        onShowTodoDetails={() => {}}
+        onHideTodoDetails={() => {}}
+        onSetVisibilityFilter={() => {}}
+        visibilityFilter='ALL'
+        />
     </Provider>, div);
 });

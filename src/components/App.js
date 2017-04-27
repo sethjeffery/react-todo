@@ -20,7 +20,7 @@ export const App = ({
   <ScrollToTop>
     <div className='App'>
       <AppBar
-        title="Todo List"
+        title="Thunderlist"
         style={{ backgroundColor: indigo900}}
         showMenuIconButton={false}
         iconElementRight={<IconMenu

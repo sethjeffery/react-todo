@@ -104,3 +104,30 @@ describe('TOGGLE_DRAWER', () => {
     expect(secondState.drawerOpen).toEqual(true)
   })
 })
+
+describe('SHOW_TODO_DETAILS', () => {
+  it('selects one distinct todo', () => {
+    const firstState = [{ id: 0, text: 'First' }, { id: 1, text: 'Second' }]
+    const checkedFirst = [{ id: 0, text: 'First', selected: true }, { id: 1, text: 'Second', selected: false }]
+    const checkedSecond = [{ id: 0, text: 'First', selected: false }, { id: 1, text: 'Second', selected: true }]
+
+    expect(
+      reducer({ todos: firstState }, { type: 'SHOW_TODO_DETAILS', id: 0 }).todos
+    ).toEqual(checkedFirst)
+
+    expect(
+      reducer({ todos: checkedFirst }, { type: 'SHOW_TODO_DETAILS', id: 1 }).todos
+    ).toEqual(checkedSecond)
+  })
+})
+
+describe('HIDE_TODO_DETAILS', () => {
+  it('deselects all todos', () => {
+    const firstState = [{ id: 0, text: 'First', selected: true }, { id: 1, text: 'Second' }]
+    const secondState = [{ id: 0, text: 'First', selected: false }, { id: 1, text: 'Second', selected: false }]
+
+    expect(
+      reducer({ todos: firstState }, { type: 'HIDE_TODO_DETAILS' }).todos
+    ).toEqual(secondState)
+  })
+})

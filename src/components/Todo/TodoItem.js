@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import {ListItem} from 'material-ui/List'
-import ToggleCheckBox from 'material-ui/svg-icons/toggle/check-box';
-import ToggleCheckBoxOutlineBlank from 'material-ui/svg-icons/toggle/check-box-outline-blank';
+import Checkbox from 'material-ui/Checkbox'
+import IconButton from 'material-ui/IconButton'
+import NavigationMoreHoriz from 'material-ui/svg-icons/navigation/more-horiz'
 
 const TodoItem = ({
   onClick,
+  onShowDetails,
   text,
   date,
   checked
@@ -13,13 +15,14 @@ const TodoItem = ({
   <ListItem
     primaryText={text}
     secondaryText={date}
-    leftIcon={checked ? <ToggleCheckBox /> : <ToggleCheckBoxOutlineBlank />}
-    onClick={onClick}
+    leftCheckbox={<Checkbox checked={checked} onClick={onClick} />}
+    rightIconButton={<IconButton onClick={onShowDetails}><NavigationMoreHoriz /></IconButton>}
     />
 )
 
 TodoItem.propTypes = {
   onClick: PropTypes.func,
+  onShowDetails: PropTypes.func,
   text: PropTypes.string.isRequired,
   date: PropTypes.string,
   checked: PropTypes.bool
